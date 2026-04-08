@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ref to BibTeX</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-a"></div>
+    <div class="bg-shape bg-shape-b"></div>
+    <main class="layout">
+      <section class="panel input-panel">
+        <h1>Reference to BibTeX</h1>
+        <p class="subtitle">输入一条参考文献，按标题检索并返回 LaTeX BibTeX。</p>
+
+        <label for="reference">Reference 文本</label>
+        <textarea
+          id="reference"
+          rows="7"
+          placeholder='例如：[12] Pan, Xudong, ... "Matryoshka: ..." ...'
+        ></textarea>
+
+        <div class="controls">
+          <div>
+            <label for="source">来源</label>
+            <select id="source">
+              <option value="auto">auto (DBLP → Crossref → Scholar)</option>
+              <option value="dblp">DBLP</option>
+              <option value="crossref">Crossref</option>
+              <option value="scholar">Google Scholar</option>
+            </select>
+          </div>
+          <div>
+            <label for="timeout">超时（秒）</label>
+            <input id="timeout" type="number" min="5" max="60" value="15" />
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="convertBtn">生成 BibTeX</button>
+          <button id="clearBtn" class="secondary">清空</button>
+        </div>
+        <p id="status" class="status"></p>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="output-head">
+          <h2>结果</h2>
+          <button id="copyBtn" class="secondary">复制 BibTeX</button>
+        </div>
+        <p class="meta" id="meta"></p>
+        <pre id="output" class="output" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
